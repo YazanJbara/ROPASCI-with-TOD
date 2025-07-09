@@ -1,0 +1,167 @@
+/* Variables : Colors and fonts */
+
+:root {
+  --clr-blue : #15616D;
+  --clr-dark-blue:#001524;
+  --clr-creamy: #FFECD1;
+  --clr-orange:#FF7D00;
+  --clr-brown:#78290F;
+}
+
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* 4. Add accessible line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/*
+    10. Create a root stacking context
+  */
+#root,
+#__next {
+  isolation: isolate;
+}
+
+body {
+  background-color: var(--clr-creamy);
+  font-family: "Oswald", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-weight: bold;
+  /* margin: 4rem; */
+}
+
+/* Layout */
+
+.container {
+  width: 90rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.split {
+  display:flex;
+  gap: 20rem;
+  text-align: center;
+}
+
+.columns {
+  display: flex;
+  /* padding: 30px; */
+  margin-top: 1rem;
+  gap: 1rem;
+  width: 40rem;
+  justify-content: space-between;
+}
+
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
+}
+
+.btn {
+  padding: 12px 45px;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--clr-creamy);
+}
+
+.btn--reset {
+  background-color:var(--clr-orange);
+}
+
+.btn--play {
+  background-color: var(--clr-blue);
+}
+
+/* ELEMENTS */
+.icons {
+  display: flex;
+  margin-top: -6px;
+}
+
+.title {
+  font-family: "Indie Flower", cursive;
+  font-size: 40px;
+}
+.name {
+  color: var(--clr-blue);
+  padding: 4px;
+  border: 2px solid var(--clr-blue);
+  font-size: 18px;
+}
+
+.score {
+  font-size: 20px;
+  color:var(--clr-orange);
+}
