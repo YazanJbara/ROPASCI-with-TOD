@@ -12,13 +12,24 @@ const resetBtn = document.querySelector('.btn--reset');
 
 const gesture = document.getElementById('computer-gesture');
 
+const overlay = document.getElementById('overlay')
 
 
 // computer random logic
 playBtn.addEventListener('click', function () {
+  overlay.style.display = 'block';
  const randomGesture = Math.trunc(Math.random() * 3) + 1;
   gesture.src = `Assets/gesture--${randomGesture}.svg`;
+  
 });
+
+overlay.addEventListener('click', function (e) {
+  if (e.target === overlay) {
+    overlay.style.display = 'none';
+  }
+});
+
+// overlay 
 
 
 // generate computer choice randomly

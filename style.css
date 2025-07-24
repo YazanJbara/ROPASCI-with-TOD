@@ -164,3 +164,42 @@ body {
   font-size: 20px;
   color: var(--clr-orange);
 }
+
+/* EFFECTS */
+
+#overlay {
+  position: fixed;
+  display: none; 
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  /* cursor: pointer; */
+}
+
+.overlay-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 22px;
+  background-color: #eeece9;
+  padding: 30px 40px;
+  width: 23rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.overlay-box .icons {
+  gap: 25px;
+  cursor: pointer;
+}
+
