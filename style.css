@@ -1,11 +1,11 @@
 /* Variables : Colors and fonts */
 
 :root {
-  --clr-blue : #15616D;
-  --clr-dark-blue:#001524;
-  --clr-creamy: #FFECD1;
-  --clr-orange:#FF7D00;
-  --clr-brown:#78290F;
+  --clr-blue: #15616d;
+  --clr-dark-blue: #001524;
+  --clr-creamy: #ffecd1;
+  --clr-orange: #ff7d00;
+  --clr-brown: #78290f;
 }
 
 /* 1. Use a more-intuitive box-sizing model */
@@ -80,7 +80,7 @@ h6 {
 
 body {
   background-color: var(--clr-creamy);
-  font-family: "Oswald", sans-serif;
+  font-family: 'Oswald', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,7 +105,7 @@ body {
 }
 
 .split {
-  display:flex;
+  display: flex;
   gap: 20rem;
   text-align: center;
 }
@@ -119,12 +119,10 @@ body {
   justify-content: space-between;
 }
 
-
 .buttons {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  
 }
 
 .btn {
@@ -137,7 +135,7 @@ body {
 }
 
 .btn--reset {
-  background-color:var(--clr-orange);
+  background-color: var(--clr-orange);
 }
 
 .btn--play {
@@ -151,7 +149,7 @@ body {
 }
 
 .title {
-  font-family: "Indie Flower", cursive;
+  font-family: 'Indie Flower', cursive;
   font-size: 40px;
 }
 .name {
@@ -161,7 +159,8 @@ body {
   font-size: 18px;
 }
 
-.score {
+.user-score,
+.computer-score {
   font-size: 20px;
-  color:var(--clr-orange);
+  color: var(--clr-orange);
 }
