@@ -3,7 +3,6 @@ const options = ['rock', 'paper', 'scissors'];
 let humanScore = 0;
 let computerScore = 0;
 
-
 const humanPoints = document.querySelector('.user-score');
 const computerPoints = document.querySelector('.computer-score');
 
@@ -12,15 +11,25 @@ const resetBtn = document.querySelector('.btn--reset');
 
 const gesture = document.getElementById('computer-gesture');
 
-const overlay = document.getElementById('overlay')
+const overlay = document.getElementById('overlay');
 
+// selecting all the icons inside the overlay-box class
+// TODO : event delegation with forEach
+const choices = document.querySelectorAll('#overlay .overlay-box .icons img ');
+const choice = document.querySelector('.gesture');
+
+choices.forEach((el) => {
+  el.addEventListener('click', function () {
+    choice.src = el.src;
+    overlay.style.display = 'none';
+  });
+});
 
 // computer random logic
-playBtn.addEventListener('click', function () {
+playBtn.addEventListener('click',  function () {
   overlay.style.display = 'block';
- const randomGesture = Math.trunc(Math.random() * 3) + 1;
+  const randomGesture = Math.trunc(Math.random() * 3) + 1;
   gesture.src = `Assets/gesture--${randomGesture}.svg`;
-  
 });
 
 overlay.addEventListener('click', function (e) {
@@ -29,8 +38,7 @@ overlay.addEventListener('click', function (e) {
   }
 });
 
-// overlay 
-
+// overlay
 
 // generate computer choice randomly
 
