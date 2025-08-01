@@ -1,5 +1,4 @@
-// global variables & DOM selections
-const options = ['rock', 'paper', 'scissors'];
+// ? global variables & DOM selections
 let humanScore = 0;
 let computerScore = 0;
 
@@ -13,85 +12,66 @@ const gesture = document.getElementById('computer-gesture');
 
 const overlay = document.getElementById('overlay');
 
-// selecting all the icons inside the overlay-box class
-// TODO : event delegation with forEach
+
 const choices = document.querySelectorAll('#overlay .overlay-box .icons img ');
 const choice = document.querySelector('.gesture');
 
-choices.forEach((el) => {
-  el.addEventListener('click', function () {
-    choice.src = el.src;
-    overlay.style.display = 'none';
-  });
-});
+function playRound(humanChoice, computerChoice) {
+  // Convert choices to lowercase for comparison
+  const human = humanChoice.toLowerCase();
+  const computer = computerChoice.toLowerCase();
 
-// computer random logic
-playBtn.addEventListener('click',  function () {
+  if (human === computer) {
+    return 'tie';
+  }
+
+  if (
+    (human === 'rock' && computer === 'scissors') ||
+    (human === 'paper' && computer === 'rock') ||
+    (human === 'scissors' && computer === 'paper')
+  ) {
+    humanScore++;
+    humanPoints.textContent = humanScore;
+    return 'human';
+  } else {
+    computerScore++;
+    computerPoints.textContent = computerScore;
+    return 'computer';
+  }
+}
+
+// ! convert img path into words
+function getChoiceFromSrc(src) {
+  if (src.includes('gesture--1')) return 'paper';
+  if (src.includes('gesture--2')) return 'scissors';
+  if (src.includes('gesture--3')) return 'rock';
+}
+
+// ! Computer random logic
+playBtn.addEventListener('click', function () {
   overlay.style.display = 'block';
   const randomGesture = Math.trunc(Math.random() * 3) + 1;
   gesture.src = `Assets/gesture--${randomGesture}.svg`;
 });
+
+// ! event delegeation to handle various clicks
+choices.forEach((el) => {
+  el.addEventListener('click', function () {
+    choice.src = el.src;
+    overlay.style.display = 'none';
+    const humanChoice = getChoiceFromSrc(el.src); 
+    const computerChoice = getChoiceFromSrc(gesture.src);
+    const result = playRound(humanChoice, computerChoice);
+    console.log(
+      `Human: ${humanChoice}, Computer: ${computerChoice}, Winner: ${result}`
+    );
+  });
+});
+
+
 
 overlay.addEventListener('click', function (e) {
   if (e.target === overlay) {
     overlay.style.display = 'none';
   }
 });
-
-// overlay
-
-// generate computer choice randomly
-
-function getComputerChoice() {
-  const randomOption = options[Math.floor(Math.random() * options.length)];
-  // console.log(randomOption);
-  return randomOption;
-}
-
-// taking user input
-
-// function getPlayerChoice () {
-//   let validatedinput = false;
-//   while (validatedinput==false) {
-//     const choice = prompt("enter rock || paper || scissors")
-//     if (choice == null) {
-//       continue;
-//     }
-//     const inputInLowerCase = choice.toLowerCase()
-//     if (options.includes(inputInLowerCase)) {
-//       validatedinput = true
-//       return inputInLowerCase;
-//     }
-//   }
-
-// }
-
-// function to check who won
-
-function playRound(humanChoice, computerChoice) {
-  if (
-    (humanChoice == 'rock' && computerChoice == 'scissors') ||
-    (humanChoice == 'scissors' && computerChoice == 'paper') ||
-    (humanChoice == 'paper' && computerChoice == 'rock')
-  ) {
-    return `Player won cz he choosed ${humanChoice} vs computer choosed ${computerChoice} `;
-  } else if (humanChoice == computerChoice) {
-    return 'Tie';
-  } else {
-    return `computer won cz he choosed ${computerChoice} vs human choosed ${humanChoice} `;
-  }
-}
-
-// the entire game
-
-function playGame() {
-  for (let i = 0; i < 5; i++) {
-    const humanSelection = getPlayerChoice();
-
-    const computerSelection = getComputerChoice();
-
-    console.log(playRound(humanSelection, computerSelection));
-  }
-}
-
-playGame();
