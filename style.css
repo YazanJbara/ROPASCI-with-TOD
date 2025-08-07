@@ -86,7 +86,6 @@ body {
   align-items: center;
   min-height: 100vh;
   font-weight: bold;
-  /* margin: 4rem; */
 }
 
 /* Layout */
@@ -112,7 +111,6 @@ body {
 
 .columns {
   display: flex;
-  /* padding: 30px; */
   margin-top: 1rem;
   gap: 1rem;
   width: 40rem;
@@ -203,3 +201,6 @@ body {
   cursor: pointer;
 }
 
+.gesture {
+  /* position: absolute; */
+}

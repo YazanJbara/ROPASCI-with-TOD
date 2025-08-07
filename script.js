@@ -12,7 +12,6 @@ const gesture = document.getElementById('computer-gesture');
 
 const overlay = document.getElementById('overlay');
 
-
 const choices = document.querySelectorAll('#overlay .overlay-box .icons img ');
 const choice = document.querySelector('.gesture');
 
@@ -59,7 +58,7 @@ choices.forEach((el) => {
   el.addEventListener('click', function () {
     choice.src = el.src;
     overlay.style.display = 'none';
-    const humanChoice = getChoiceFromSrc(el.src); 
+    const humanChoice = getChoiceFromSrc(el.src);
     const computerChoice = getChoiceFromSrc(gesture.src);
     const result = playRound(humanChoice, computerChoice);
     console.log(
@@ -68,10 +67,17 @@ choices.forEach((el) => {
   });
 });
 
-
-
 overlay.addEventListener('click', function (e) {
   if (e.target === overlay) {
     overlay.style.display = 'none';
   }
+});
+
+// Resetting the game
+
+resetBtn.addEventListener('click', function () {
+  humanScore = 0;
+  computerScore = 0;
+  humanPoints.textContent = humanScore;
+  computerPoints.textContent = computerScore;
 });
