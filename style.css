@@ -225,7 +225,7 @@ body {
 
 .win-message {
   color: var(--clr-blue);
-  padding: 5px;
+  padding: 7px;
   background-color: rgba(255, 125, 0, 0.1);
   border-radius: 4px;
   text-align: center;
@@ -234,3 +234,5 @@ body {
 .win-message.hidden {
   display: none;
 }
+
+/* Responsivness */
