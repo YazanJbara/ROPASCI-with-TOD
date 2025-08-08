@@ -73,7 +73,7 @@ overlay.addEventListener('click', function (e) {
   }
 });
 
-// Resetting the game
+// ? Resetting the game
 
 resetBtn.addEventListener('click', function () {
   humanScore = 0;

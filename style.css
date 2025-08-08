@@ -95,6 +95,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1rem;
 }
 
 .header {
@@ -103,9 +104,15 @@ body {
   align-items: center;
 }
 
+.icons {
+  display: flex;
+  margin-top: -6px;
+}
+
 .split {
   display: flex;
-  gap: 20rem;
+  width: 30rem;
+  justify-content: space-between;
   text-align: center;
 }
 
@@ -116,6 +123,10 @@ body {
   width: 40rem;
   justify-content: space-between;
 }
+
+
+
+/* ELEMENTS */
 
 .buttons {
   display: flex;
@@ -140,12 +151,6 @@ body {
   background-color: var(--clr-blue);
 }
 
-/* ELEMENTS */
-.icons {
-  display: flex;
-  margin-top: -6px;
-}
-
 .title {
   font-family: 'Indie Flower', cursive;
   font-size: 40px;
@@ -167,7 +172,7 @@ body {
 
 #overlay {
   position: fixed;
-  display: none; 
+  display: none;
   width: 100%;
   height: 100%;
   top: 0;
@@ -202,5 +207,9 @@ body {
 }
 
 .gesture {
-  /* position: absolute; */
+  filter:
+   brightness(0) saturate(100%) invert(63%) sepia(39%)
+   saturate(7162%) hue-rotate(360deg) brightness(105%) contrast(107%);
+  scale: 3.55;
+  margin-inline: 1.5rem;
 }
