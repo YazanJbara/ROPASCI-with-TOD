@@ -15,6 +15,27 @@ const overlay = document.getElementById('overlay');
 const choices = document.querySelectorAll('#overlay .overlay-box .icons img ');
 const choice = document.querySelector('.gesture');
 
+
+function humanWon () {
+  const existingMessages = document.querySelectorAll('.win-message');
+  existingMessages.forEach((message) => message.classList.add('hidden'));
+  const humanSide = document.getElementById('human')
+  const winMessage = document.createElement('p')
+  winMessage.className = 'win-message'
+  winMessage.textContent = "Human won"
+  humanSide.appendChild(winMessage)
+}
+
+function computerWon() {
+  const existingMessages = document.querySelectorAll('.win-message');
+  existingMessages.forEach((message) => message.classList.add('hidden'));
+  const computerSide = document.getElementById('computer');
+  const winMessage = document.createElement('p');
+  winMessage.className = 'win-message'
+  winMessage.textContent = 'Computer won';
+  computerSide.appendChild(winMessage);
+}
+
 function playRound(humanChoice, computerChoice) {
   // Convert choices to lowercase for comparison
   const human = humanChoice.toLowerCase();
@@ -29,10 +50,12 @@ function playRound(humanChoice, computerChoice) {
     (human === 'paper' && computer === 'rock') ||
     (human === 'scissors' && computer === 'paper')
   ) {
+    humanWon()
     humanScore++;
     humanPoints.textContent = humanScore;
     return 'human';
   } else {
+    computerWon()
     computerScore++;
     computerPoints.textContent = computerScore;
     return 'computer';
@@ -80,4 +103,7 @@ resetBtn.addEventListener('click', function () {
   computerScore = 0;
   humanPoints.textContent = humanScore;
   computerPoints.textContent = computerScore;
+
+  const existingMessages = document.querySelectorAll('.win-message');
+  existingMessages.forEach((message) => message.classList.add('hidden'));
 });

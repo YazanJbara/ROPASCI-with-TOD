@@ -204,6 +204,15 @@ body {
 .overlay-box .icons {
   gap: 25px;
   cursor: pointer;
+   
+}
+
+.overlay-box .icons img {
+   transition-duration: 500ms;
+}
+
+.overlay-box .icons img:hover {
+ scale: 1.2;
 }
 
 .gesture {
@@ -212,4 +221,16 @@ body {
    saturate(7162%) hue-rotate(360deg) brightness(105%) contrast(107%);
   scale: 3.55;
   margin-inline: 1.5rem;
+}
+
+.win-message {
+  color: var(--clr-blue);
+  padding: 5px;
+  background-color: rgba(255, 125, 0, 0.1);
+  border-radius: 4px;
+  text-align: center;
+}
+
+.win-message.hidden {
+  display: none;
 }
