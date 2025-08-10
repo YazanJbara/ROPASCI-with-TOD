@@ -14,26 +14,37 @@ const overlay = document.getElementById('overlay');
 
 const choices = document.querySelectorAll('#overlay .overlay-box .icons img ');
 const choice = document.querySelector('.gesture');
+const tieMessage = document.getElementById('tie-message');
 
-
-function humanWon () {
+function humanWon() {
   const existingMessages = document.querySelectorAll('.win-message');
   existingMessages.forEach((message) => message.classList.add('hidden'));
-  const humanSide = document.getElementById('human')
-  const winMessage = document.createElement('p')
-  winMessage.className = 'win-message'
-  winMessage.textContent = "Human won"
-  humanSide.appendChild(winMessage)
+   if (tieMessage) tieMessage.classList.add('hidden');
+  const humanSide = document.getElementById('human');
+  const winMessage = document.createElement('p');
+  winMessage.className = 'win-message';
+  winMessage.textContent = 'Human won';
+  humanSide.appendChild(winMessage);
 }
 
 function computerWon() {
   const existingMessages = document.querySelectorAll('.win-message');
   existingMessages.forEach((message) => message.classList.add('hidden'));
+  if (tieMessage) tieMessage.classList.add('hidden');
   const computerSide = document.getElementById('computer');
   const winMessage = document.createElement('p');
-  winMessage.className = 'win-message'
+  winMessage.className = 'win-message';
   winMessage.textContent = 'Computer won';
   computerSide.appendChild(winMessage);
+}
+
+function showTie() {
+  const existingMessages = document.querySelectorAll('.win-message');
+  existingMessages.forEach((message) => message.classList.add('hidden'));
+  if (tieMessage) {
+    tieMessage.textContent = "It's a tie!";
+    tieMessage.classList.remove('hidden');
+  }
 }
 
 function playRound(humanChoice, computerChoice) {
@@ -42,6 +53,7 @@ function playRound(humanChoice, computerChoice) {
   const computer = computerChoice.toLowerCase();
 
   if (human === computer) {
+    showTie();
     return 'tie';
   }
 
@@ -50,36 +62,39 @@ function playRound(humanChoice, computerChoice) {
     (human === 'paper' && computer === 'rock') ||
     (human === 'scissors' && computer === 'paper')
   ) {
-    humanWon()
+    humanWon();
     humanScore++;
     humanPoints.textContent = humanScore;
     return 'human';
   } else {
-    computerWon()
+    computerWon();
     computerScore++;
     computerPoints.textContent = computerScore;
     return 'computer';
   }
 }
 
-// ! convert img path into words
+// ! convert img path to words
 function getChoiceFromSrc(src) {
   if (src.includes('gesture--1')) return 'paper';
   if (src.includes('gesture--2')) return 'scissors';
   if (src.includes('gesture--3')) return 'rock';
 }
 
-// ! Computer random logic
+
 playBtn.addEventListener('click', function () {
   overlay.style.display = 'block';
-  const randomGesture = Math.trunc(Math.random() * 3) + 1;
-  gesture.src = `Assets/gesture--${randomGesture}.svg`;
 });
 
 // ! event delegeation to handle various clicks
 choices.forEach((el) => {
   el.addEventListener('click', function () {
     choice.src = el.src;
+
+    //* computer random logic
+    const randomGesture = Math.trunc(Math.random() * 3) + 1;
+    gesture.src = `Assets/gesture--${randomGesture}.svg`;
+
     overlay.style.display = 'none';
     const humanChoice = getChoiceFromSrc(el.src);
     const computerChoice = getChoiceFromSrc(gesture.src);
@@ -96,7 +111,7 @@ overlay.addEventListener('click', function (e) {
   }
 });
 
-// ? Resetting the game
+// * Resetting the game
 
 resetBtn.addEventListener('click', function () {
   humanScore = 0;
@@ -106,4 +121,5 @@ resetBtn.addEventListener('click', function () {
 
   const existingMessages = document.querySelectorAll('.win-message');
   existingMessages.forEach((message) => message.classList.add('hidden'));
+  if (tieMessage) tieMessage.classList.add('hidden');
 });

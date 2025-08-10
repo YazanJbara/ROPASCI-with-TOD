@@ -1,5 +1,3 @@
-/* Variables : Colors and fonts */
-
 :root {
   --clr-blue: #15616d;
   --clr-dark-blue: #001524;
@@ -7,6 +5,8 @@
   --clr-orange: #ff7d00;
   --clr-brown: #78290f;
 }
+
+/* CSS Reset */
 
 /* 1. Use a more-intuitive box-sizing model */
 *,
@@ -124,8 +124,6 @@ body {
   justify-content: space-between;
 }
 
-
-
 /* ELEMENTS */
 
 .buttons {
@@ -153,18 +151,18 @@ body {
 
 .title {
   font-family: 'Indie Flower', cursive;
-  font-size: 40px;
+  font-size: 2.5rem;
 }
 .name {
   color: var(--clr-blue);
   padding: 4px;
   border: 2px solid var(--clr-blue);
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .user-score,
 .computer-score {
-  font-size: 20px;
+  font-size: 1.25rem;
   color: var(--clr-orange);
 }
 
@@ -189,7 +187,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 22px;
+  font-size: 1.375rem;
   background-color: #eeece9;
   padding: 30px 40px;
   width: 23rem;
@@ -204,21 +202,19 @@ body {
 .overlay-box .icons {
   gap: 25px;
   cursor: pointer;
-   
 }
 
 .overlay-box .icons img {
-   transition-duration: 500ms;
+  transition-duration: 500ms;
 }
 
 .overlay-box .icons img:hover {
- scale: 1.2;
+  scale: 1.2;
 }
 
 .gesture {
-  filter:
-   brightness(0) saturate(100%) invert(63%) sepia(39%)
-   saturate(7162%) hue-rotate(360deg) brightness(105%) contrast(107%);
+  filter: brightness(0) saturate(100%) invert(63%) sepia(39%) saturate(7162%)
+    hue-rotate(360deg) brightness(105%) contrast(107%);
   scale: 3.55;
   margin-inline: 1.5rem;
 }
@@ -235,4 +231,89 @@ body {
   display: none;
 }
 
+.hidden {
+  display: none;
+}
+
+
+.tie-message {
+  color: var(--clr-orange);
+  background: rgba(21, 97, 109, 0.08);
+  border-radius: 4px;
+  padding: 6px 10px;
+  text-align: center;
+  font-size: 1.125rem;
+}
+
 /* Responsivness */
+
+@media (max-width: 700px) {
+  body {
+    padding: 16px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 700px;
+    gap: 1.7rem;
+  }
+
+  .title {
+    font-size: clamp(1.75rem, 8vw, 2.25rem);
+  }
+
+  .split {
+    width: 100%;
+    max-width: 520px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    padding: 0 4px;
+  }
+  .player {
+    background: rgba(21, 97, 109, 0.06);
+    border: 1px solid rgba(21, 97, 109, 0.25);
+    border-radius: 10px;
+    padding: 6px 10px;
+  }
+  .name {
+    font-size: 0.938rem;
+    padding: 2px 6px;
+  }
+  .user-score,
+  .computer-score {
+    font-size: 1.125rem;
+  }
+
+  .columns {
+    width: 100%;
+    align-items: center;
+  }
+
+  .gesture {
+    scale: 0.7;
+    width: clamp(96px, 28vw, 150px);
+    margin-inline: 0;
+  }
+
+  .buttons {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .btn {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 1rem;
+    border-radius: 14px;
+  }
+
+  .overlay-box {
+    width: 19rem;
+    padding: 22px;
+    gap: 14px;
+    font-size: 1rem;
+  }
+}
