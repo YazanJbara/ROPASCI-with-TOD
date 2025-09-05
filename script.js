@@ -18,7 +18,7 @@ const tieMessage = document.getElementById('tie-message');
 
 function humanWon() {
   const existingMessages = document.querySelectorAll('.win-message');
-  existingMessages.forEach((message) => message.classList.add('hidden'));
+  existingMessages.forEach(message => message.classList.add('hidden'));
    if (tieMessage) tieMessage.classList.add('hidden');
   const humanSide = document.getElementById('human');
   const winMessage = document.createElement('p');
@@ -29,7 +29,7 @@ function humanWon() {
 
 function computerWon() {
   const existingMessages = document.querySelectorAll('.win-message');
-  existingMessages.forEach((message) => message.classList.add('hidden'));
+  existingMessages.forEach(message => message.classList.add('hidden'));
   if (tieMessage) tieMessage.classList.add('hidden');
   const computerSide = document.getElementById('computer');
   const winMessage = document.createElement('p');
@@ -40,7 +40,7 @@ function computerWon() {
 
 function showTie() {
   const existingMessages = document.querySelectorAll('.win-message');
-  existingMessages.forEach((message) => message.classList.add('hidden'));
+  existingMessages.forEach(message => message.classList.add('hidden'));
   if (tieMessage) {
     tieMessage.textContent = "It's a tie!";
     tieMessage.classList.remove('hidden');
@@ -120,6 +120,6 @@ resetBtn.addEventListener('click', function () {
   computerPoints.textContent = computerScore;
 
   const existingMessages = document.querySelectorAll('.win-message');
-  existingMessages.forEach((message) => message.classList.add('hidden'));
+  existingMessages.forEach(message => message.classList.add('hidden'));
   if (tieMessage) tieMessage.classList.add('hidden');
 });
